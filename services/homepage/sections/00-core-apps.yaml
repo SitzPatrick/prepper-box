@@ -1,0 +1,25 @@
+- Local Apps:
+  - Homepage:
+    - abbr: HP
+      href: http://10.1.10.140:3001/
+  - Open WebUI:
+    - abbr: OW
+      href: http://10.1.10.140:3000/
+  - MeshChat:
+    - abbr: MC
+      href: http://10.1.10.140:8011/
+  - Audiobookshelf:
+    - abbr: AB
+      href: http://10.1.10.140:13378/
+  - Books Share:
+    - abbr: BK
+      href: smb://10.1.10.140/Books
+  - Portainer:
+    - abbr: PT
+      href: https://10.1.10.140:9443/
+  - Ollama API:
+    - abbr: OA
+      href: http://10.1.10.140:11434/
+  - Qdrant:
+    - abbr: QD
+      href: http://10.1.10.140:6333/

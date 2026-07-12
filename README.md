@@ -32,6 +32,9 @@ This repo intentionally excludes:
 - `services/qdrant/` — Qdrant compose file
 - `docs/inventory.md` — what is included and excluded
 - `docs/services/README.md` — per-service quick notes and run tips
+- `docs/deploy.md` — how to deploy and restore this repo on the box
+- `Makefile` — shortcuts for Homepage build/deploy and backup/restore
+- `scripts/render-homepage.py` — combines Homepage section fragments
 - `.env.example` — template for local secrets
 
 ## Setup

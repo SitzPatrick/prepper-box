@@ -1,0 +1,7 @@
+- Offline Reference:
+  - Kiwix Prepper Library:
+    - abbr: KP
+      href: http://10.1.10.140:3002/
+  - Protomaps Georgia Map:
+    - abbr: PM
+      href: http://10.1.10.140:3004/examples/local.html

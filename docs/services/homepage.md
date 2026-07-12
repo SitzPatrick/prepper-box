@@ -1,7 +1,8 @@
 # Homepage
 
 Files:
-- `services/homepage/services.yaml`
+- `services/homepage/sections/*.yaml` (source fragments)
+- `services/homepage/services.yaml` (generated combined file)
 - `services/homepage/bookmarks.yaml`
 - `services/homepage/settings.yaml`
 - `services/homepage/widgets.yaml`
@@ -14,9 +15,10 @@ Files:
 Run notes:
 - Dashboard is exposed on port `3001`.
 - Restart the container after config changes.
-- Keep widget/provider YAML files aligned with the live services in the box.
+- Build `services.yaml` from the fragments before deploying.
 
 Typical update flow:
-- edit the YAML/CSS/JS files in this repo
-- copy them to the live box
+- edit one or more files under `services/homepage/sections/`
+- run `make homepage-build`
+- copy the generated `services.yaml` and companion files to the live box
 - restart Homepage

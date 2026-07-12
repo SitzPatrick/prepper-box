@@ -1,0 +1,7 @@
+- Workflow:
+  - Paperless-ngx:
+    - abbr: PL
+      href: http://10.1.10.140:8010/
+  - Paperless Intake:
+    - abbr: PI
+      href: http://10.1.10.140:8010/
