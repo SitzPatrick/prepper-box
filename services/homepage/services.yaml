@@ -26,6 +26,7 @@
   - Qdrant:
     - abbr: QD
       href: http://10.1.10.140:6333/
+      icon: https://qdrant.tech/img/qdrant-logo.svg
 
 - Offline Reference:
   - Kiwix Prepper Library:
