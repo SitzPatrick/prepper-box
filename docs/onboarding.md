@@ -61,6 +61,16 @@ Keep those in the live machine's working directories or in a private secret mana
 - `make backup ARCHIVE=/tmp/prepper-box.tar.gz` — create a snapshot of repo files
 - `make restore ARCHIVE=/tmp/prepper-box.tar.gz DEST=/tmp/restore-target` — restore a snapshot
 
+## Lessons learned
+
+A few patterns turned out to be especially useful:
+
+- keep secrets out of git and let the live machine own the real `.env`
+- split Homepage into small section files so updates stay readable
+- make the combined Homepage file generated, not hand-edited
+- document the live box paths next to the source files so deployment stays obvious
+- keep backup/restore commands simple enough that another person can run them without guessing
+
 ## If you are starting from scratch
 
 If you want to use this as a template, rename the project and update the docs to match your own machine name. The layout is intentionally small and readable so you can keep only the services you actually run.
