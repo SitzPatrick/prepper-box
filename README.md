@@ -33,6 +33,7 @@ This repo intentionally excludes:
 - `docs/inventory.md` — what is included and excluded
 - `docs/services/README.md` — per-service quick notes and run tips
 - `docs/deploy.md` — how to deploy and restore this repo on the box
+- `docs/onboarding.md` — how to adapt the repo to your own machine
 - `Makefile` — shortcuts for Homepage build/deploy and backup/restore
 - `scripts/render-homepage.py` — combines Homepage section fragments
 - `.env.example` — template for local secrets
