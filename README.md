@@ -53,6 +53,16 @@ This repo intentionally excludes:
 
 3. Start or update the relevant compose project on the box.
 
+## Arcade / MAME
+
+The Ubuntu prepper box also has a lightweight local arcade setup:
+
+- MAME is installed on the box
+- launcher: `/home/patrick/arcade/mame/mame-launcher.py`
+- ROM folder: `/home/patrick/arcade/mame/roms`
+- the Homepage tile opens `arcade://launch` on the local machine
+- the launcher shows cleaned-up game titles and only lists playable sets
+
 ## Notes
 
 - The compose files reference the live box paths under `/srv/...`.
