@@ -1,0 +1,15 @@
+- Workflow:
+  - Paperless-ngx:
+      href: http://10.1.10.140:8010/
+      description: Document management and intake for scans, receipts, and paperless archiving
+      icon: paperless-ngx.png
+      server: my-docker
+      container: paperless-webserver-1
+      siteMonitor: http://10.1.10.140:8010/
+  - Paperless Intake:
+      href: http://10.1.10.140:8010/
+      description: Drop scans into /srv/paperless/consume/inbox, then review and archive in Paperless
+      icon: paperless-ngx.png
+      server: my-docker
+      container: paperless-webserver-1
+      siteMonitor: http://10.1.10.140:8010/

@@ -6,7 +6,7 @@ This repo captures the parts of the box that are useful to version control:
 
 - Homepage configuration and theme overrides
 - Audiobookshelf compose file
-- Samba share compose file for Audiobooks and Books
+- Samba share compose file for Audiobooks, Books, and Jellyfin media
 - Network-admin app code
 - Paperless-ngx compose file
 - Qdrant compose file
@@ -28,6 +28,7 @@ This repo intentionally excludes:
 - `services/homepage/` — Homepage dashboard config and styling
 - `services/audiobookshelf/` — Audiobookshelf compose file
 - `services/samba/` — Samba share compose file
+- `services/jellyfin/` — Jellyfin compose file
 - `services/network-admin/` — the small network admin web app
 - `services/paperless/` — Paperless-ngx compose file
 - `services/qdrant/` — Qdrant compose file
@@ -63,6 +64,15 @@ The Ubuntu prepper box also has a lightweight local arcade setup:
 - ROM folder: `/home/patrick/arcade/mame/roms`
 - the Homepage tile opens `arcade://launch` on the local machine
 - the launcher shows cleaned-up game titles and only lists playable sets
+
+## Jellyfin / media shares
+
+The prepper box also runs Jellyfin for local media playback:
+
+- Jellyfin web UI: `http://10.1.10.140:8096/`
+- Jellyfin media root: `/srv/jellyfin/media`
+- the media root is shared over SMB as `Jellyfin`
+- the same Samba container still serves the existing `Audiobooks` and `Books` shares
 
 ## Notes
 

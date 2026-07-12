@@ -1,0 +1,9 @@
+- Local Apps:
+  - Arcade Emulator:
+      href: arcade://launch
+      description: Launch the local arcade picker/emulator
+      icon: mdi-gamepad-variant
+  - RedNotebook:
+      href: rednotebook://launch
+      description: Open the local RedNotebook journal
+      icon: mdi-notebook

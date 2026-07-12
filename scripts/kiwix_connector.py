@@ -133,6 +133,66 @@ def search(pattern: str, limit: int = 8) -> list[dict[str, str]]:
     return results
 
 
+def normalize_title(title: str) -> str:
+    return re.sub(r"\s+", " ", re.sub(r"[^\w\s]", " ", html.unescape(title))).strip().lower()
+
+
+def search_by_title(pattern: str, limit: int = 8) -> list[dict[str, str]]:
+    needle = normalize_title(pattern)
+    if not needle:
+        return []
+
+    candidates: list[dict[str, str]] = []
+    seen: set[str] = set()
+
+    for item in search(pattern, limit=max(limit * 5, 20)):
+        url = item.get("url", "")
+        if not url or url in seen:
+            continue
+        candidates.append(item)
+        seen.add(url)
+
+    for item in list_titles():
+        url = item.get("url", "")
+        if not url or url in seen:
+            continue
+        title = item.get("title", "")
+        norm = normalize_title(title)
+        if norm == needle or norm.startswith(f"{needle} ") or needle in norm:
+            candidates.append(item)
+            seen.add(url)
+
+    ranked: list[tuple[int, int, dict[str, str]]] = []
+    for item in candidates:
+        title = item.get("title", "")
+        if not title:
+            continue
+        norm = normalize_title(title)
+        if norm == needle:
+            bucket = 0
+        elif norm.startswith(f"{needle} "):
+            bucket = 1
+        elif needle in norm:
+            bucket = 2
+        else:
+            bucket = 3
+        ranked.append((bucket, len(title), item))
+
+    ranked.sort(key=lambda row: (row[0], row[1], row[2].get("title", "").lower()))
+    results: list[dict[str, str]] = []
+    seen.clear()
+    for _, _, item in ranked:
+        url = item.get("url", "")
+        if not url or url in seen:
+            continue
+        results.append(item)
+        seen.add(url)
+        if len(results) >= limit:
+            break
+
+    return results[:limit]
+
+
 class ArticleTextParser(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -221,6 +281,17 @@ OPENAPI = {
                 "responses": {"200": {"description": "Search results"}},
             }
         },
+        "/search_title": {
+            "get": {
+                "operationId": "search_title",
+                "summary": "Search for an exact or near-exact article title",
+                "parameters": [
+                    {"name": "pattern", "in": "query", "required": True, "schema": {"type": "string"}},
+                    {"name": "limit", "in": "query", "required": False, "schema": {"type": "integer", "default": 8}},
+                ],
+                "responses": {"200": {"description": "Title-matched search results"}},
+            }
+        },
         "/lookup": {
             "get": {
                 "summary": "Search and return the first matching article text",
@@ -265,11 +336,17 @@ class Handler(BaseHTTPRequestHandler):
                 return json_response(self, 400, {"error": "pattern query parameter is required"})
             limit = int((qs.get("limit") or ["8"])[0])
             return json_response(self, 200, {"query": pattern, "results": search(pattern, limit)})
+        if path == "/search_title":
+            pattern = (qs.get("pattern") or [""])[0].strip()
+            if not pattern:
+                return json_response(self, 400, {"error": "pattern query parameter is required"})
+            limit = int((qs.get("limit") or ["8"])[0])
+            return json_response(self, 200, {"query": pattern, "results": search_by_title(pattern, limit)})
         if path == "/lookup":
             pattern = (qs.get("pattern") or [""])[0].strip()
             if not pattern:
                 return json_response(self, 400, {"error": "pattern query parameter is required"})
-            results = search(pattern, 1)
+            results = search_by_title(pattern, 1) or search(pattern, 1)
             if not results:
                 return json_response(self, 404, {"query": pattern, "results": []})
             article = fetch_article(results[0]["url"])
@@ -280,7 +357,7 @@ class Handler(BaseHTTPRequestHandler):
                 return json_response(self, 400, {"error": "url query parameter is required"})
             return json_response(self, 200, {"article": fetch_article(url)})
         if path == "/":
-            return text_response(self, 200, "Kiwix Local Wikipedia Connector\nUse /health, /search?pattern=..., /lookup?pattern=..., /openapi.json\n")
+            return text_response(self, 200, "Kiwix Local Wikipedia Connector\nUse /health, /search?pattern=..., /search_title?pattern=..., /lookup?pattern=..., /openapi.json\n")
         return json_response(self, 404, {"error": "not found", "path": path})
 
 

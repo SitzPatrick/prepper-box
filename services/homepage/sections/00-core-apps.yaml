@@ -1,29 +1,65 @@
-- Local Apps:
+- Core Apps:
   - Homepage:
-    - abbr: HP
       href: http://10.1.10.140:3001/
-  - Arcade Launcher:
-    - abbr: AR
-      href: arcade://launch
+      description: Main dashboard for this Ubuntu mini PC
+      icon: homepage.png
+      server: my-docker
+      container: homepage
+      siteMonitor: http://10.1.10.140:3001/
+  - Network Admin:
+      href: http://10.1.10.140:5052/
+      description: Manage AP settings and switch between Ethernet and USB Wi‑Fi uplinks
+      icon: mdi-lan
+      siteMonitor: http://10.1.10.140:5052/
   - Open WebUI:
-    - abbr: OW
       href: http://10.1.10.140:3000/
+      description: Local chat UI for Ollama models and PDF lookup
+      icon: open-webui.png
+      server: my-docker
+      container: open-webui
+      siteMonitor: http://10.1.10.140:3000/
   - MeshChat:
-    - abbr: MC
       href: http://10.1.10.140:8011/
+      description: Reticulum LXMF messaging for the Ubuntu node
+      icon: mdi-message-text
+      server: my-docker
+      container: reticulum-meshchat
+      siteMonitor: http://10.1.10.140:8011/
   - Audiobookshelf:
-    - abbr: AB
       href: http://10.1.10.140:13378/
+      description: Audiobooks and podcasts server
+      icon: mdi-book-open-page-variant
+      server: my-docker
+      container: audiobookshelf
+      siteMonitor: http://10.1.10.140:13378/
   - Books Share:
-    - abbr: BK
       href: smb://10.1.10.140/Books
-  - Portainer:
-    - abbr: PT
-      href: https://10.1.10.140:9443/
+      description: Shareable ebook folder for your readers
+      icon: mdi-folder-network-outline
   - Ollama API:
-    - abbr: OA
       href: http://10.1.10.140:11434/
+      description: Local LLM API endpoint
+      icon: ollama.png
+      server: my-docker
+      container: ollama
+      siteMonitor: http://10.1.10.140:11434/
+  - Portainer:
+      href: https://10.1.10.140:9443/
+      description: Docker management UI
+      icon: portainer.png
+      server: my-docker
+      container: portainer
+      siteMonitor: https://10.1.10.140:9443/
+  - Jellyfin:
+      href: http://10.1.10.140:8096/
+      description: Local media server
+      icon: mdi-play-box
+      server: my-docker
+      container: jellyfin
+      siteMonitor: http://10.1.10.140:8096/
   - Qdrant:
-    - abbr: QD
-      href: http://10.1.10.140:6333/
-      icon: https://qdrant.tech/img/qdrant-logo.svg
+      href: http://10.1.10.140:6333/dashboard/
+      description: Vector database for Open WebUI
+      server: my-docker
+      container: qdrant
+      siteMonitor: http://10.1.10.140:6333/healthz

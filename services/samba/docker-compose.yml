@@ -9,6 +9,7 @@ services:
     volumes:
       - /srv/audiobookshelf/audiobooks:/mount_audiobooks
       - /srv/audiobookshelf/books:/mount_books
+      - /srv/jellyfin/media:/mount_jellyfin
     env_file:
       - .env
     command:
@@ -18,4 +19,6 @@ services:
       - Audiobooks;/mount_audiobooks;yes;no;no;${SAMBA_USER}
       - -s
       - Books;/mount_books;yes;no;no;${SAMBA_USER}
+      - -s
+      - Jellyfin;/mount_jellyfin;yes;no;no;${SAMBA_USER}
       - -p

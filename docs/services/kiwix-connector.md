@@ -11,12 +11,14 @@ Local OpenAPI tool for Open WebUI that searches the Ubuntu box’s offline Kiwix
 ## What it does
 
 - searches the local Kiwix mirror using the live `/search?pattern=...` endpoint
+- exposes a title-first `/search_title?pattern=...` endpoint for cleaner disambiguation
 - fetches article text from the mirrored content pages
 - returns JSON that Open WebUI can consume as a tool
 
 ## Main endpoints
 
 - `GET /search?pattern=...&limit=...`
+- `GET /search_title?pattern=...&limit=...`
 - `GET /lookup?pattern=...`
 - `GET /page?url=...`
 
@@ -25,3 +27,7 @@ Local OpenAPI tool for Open WebUI that searches the Ubuntu box’s offline Kiwix
 Import the tool using the OpenAPI URL above from Workspace → Tools.
 
 If Open WebUI runs in the container on this same host, `host.docker.internal:3003` should also reach the service from inside the container.
+
+## Usage tip
+
+Use `search_title` first when you want the article page itself, and `search` when you want broader fuzzy results or alternate editions.

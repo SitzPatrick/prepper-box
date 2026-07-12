@@ -1,0 +1,12 @@
+- Offline Reference:
+  - Kiwix Prepper Library:
+      href: http://10.1.10.140:3002/
+      description: 'Offline prepper library: WikiMed, Wikibooks, medical sciences, ham radio, gardening, DIY, mechanics, outdoors, reference Wikipedia'
+      icon: wikipedia.png
+      server: my-docker
+      container: kiwix
+      siteMonitor: http://10.1.10.140:3002/
+  - Protomaps Offline Southeast Map:
+      href: http://10.1.10.140:3004/examples/local.html
+      description: Local offline Southeast map viewer powered by Protomaps PMTiles
+      icon: mdi-map

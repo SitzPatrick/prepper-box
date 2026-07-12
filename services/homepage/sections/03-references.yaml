@@ -1,0 +1,11 @@
+- Access:
+  - SSH:
+      href: ssh://patrick@10.1.10.140
+      description: Remote shell access
+      icon: terminal.png
+      ping: 10.1.10.140
+  - Portainer Agent Port:
+      href: http://10.1.10.140:8000/
+      description: Portainer tunnel / edge listener
+      icon: portainer.png
+      ping: 10.1.10.140

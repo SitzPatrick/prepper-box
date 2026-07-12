@@ -9,4 +9,5 @@ Run notes:
 - Shares currently cover:
   - `Audiobooks`
   - `Books`
+  - `Jellyfin`
 - Update the `.env` outside git before bringing the stack up on a real box.

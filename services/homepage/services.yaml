@@ -1,56 +1,116 @@
-- Local Apps:
+- Core Apps:
   - Homepage:
-    - abbr: HP
       href: http://10.1.10.140:3001/
-  - Arcade Launcher:
-    - abbr: AR
-      href: arcade://launch
+      description: Main dashboard for this Ubuntu mini PC
+      icon: homepage.png
+      server: my-docker
+      container: homepage
+      siteMonitor: http://10.1.10.140:3001/
+  - Network Admin:
+      href: http://10.1.10.140:5052/
+      description: Manage AP settings and switch between Ethernet and USB Wi‑Fi uplinks
+      icon: mdi-lan
+      siteMonitor: http://10.1.10.140:5052/
   - Open WebUI:
-    - abbr: OW
       href: http://10.1.10.140:3000/
+      description: Local chat UI for Ollama models and PDF lookup
+      icon: open-webui.png
+      server: my-docker
+      container: open-webui
+      siteMonitor: http://10.1.10.140:3000/
   - MeshChat:
-    - abbr: MC
       href: http://10.1.10.140:8011/
+      description: Reticulum LXMF messaging for the Ubuntu node
+      icon: mdi-message-text
+      server: my-docker
+      container: reticulum-meshchat
+      siteMonitor: http://10.1.10.140:8011/
   - Audiobookshelf:
-    - abbr: AB
       href: http://10.1.10.140:13378/
+      description: Audiobooks and podcasts server
+      icon: mdi-book-open-page-variant
+      server: my-docker
+      container: audiobookshelf
+      siteMonitor: http://10.1.10.140:13378/
   - Books Share:
-    - abbr: BK
       href: smb://10.1.10.140/Books
-  - Portainer:
-    - abbr: PT
-      href: https://10.1.10.140:9443/
+      description: Shareable ebook folder for your readers
+      icon: mdi-folder-network-outline
   - Ollama API:
-    - abbr: OA
       href: http://10.1.10.140:11434/
+      description: Local LLM API endpoint
+      icon: ollama.png
+      server: my-docker
+      container: ollama
+      siteMonitor: http://10.1.10.140:11434/
+  - Portainer:
+      href: https://10.1.10.140:9443/
+      description: Docker management UI
+      icon: portainer.png
+      server: my-docker
+      container: portainer
+      siteMonitor: https://10.1.10.140:9443/
+  - Jellyfin:
+      href: http://10.1.10.140:8096/
+      description: Local media server
+      icon: mdi-play-box
+      server: my-docker
+      container: jellyfin
+      siteMonitor: http://10.1.10.140:8096/
   - Qdrant:
-    - abbr: QD
-      href: http://10.1.10.140:6333/
-      icon: https://qdrant.tech/img/qdrant-logo.svg
+      href: http://10.1.10.140:6333/dashboard/
+      description: Vector database for Open WebUI
+      server: my-docker
+      container: qdrant
+      siteMonitor: http://10.1.10.140:6333/healthz
+
+- Local Apps:
+  - Arcade Emulator:
+      href: arcade://launch
+      description: Launch the local arcade picker/emulator
+      icon: mdi-gamepad-variant
+  - RedNotebook:
+      href: rednotebook://launch
+      description: Open the local RedNotebook journal
+      icon: mdi-notebook
 
 - Offline Reference:
   - Kiwix Prepper Library:
-    - abbr: KP
       href: http://10.1.10.140:3002/
-  - Protomaps Georgia Map:
-    - abbr: PM
+      description: 'Offline prepper library: WikiMed, Wikibooks, medical sciences, ham radio, gardening, DIY, mechanics, outdoors, reference Wikipedia'
+      icon: wikipedia.png
+      server: my-docker
+      container: kiwix
+      siteMonitor: http://10.1.10.140:3002/
+  - Protomaps Offline Southeast Map:
       href: http://10.1.10.140:3004/examples/local.html
+      description: Local offline Southeast map viewer powered by Protomaps PMTiles
+      icon: mdi-map
 
-- References:
-  - Homepage Docs:
-    - abbr: HD
-      href: https://gethomepage.dev/
-  - Open WebUI Docs:
-    - abbr: OU
-      href: https://docs.openwebui.com/
-  - Ollama Docs:
-    - abbr: OL
-      href: https://ollama.com/
+- Access:
+  - SSH:
+      href: ssh://patrick@10.1.10.140
+      description: Remote shell access
+      icon: terminal.png
+      ping: 10.1.10.140
+  - Portainer Agent Port:
+      href: http://10.1.10.140:8000/
+      description: Portainer tunnel / edge listener
+      icon: portainer.png
+      ping: 10.1.10.140
 
 - Workflow:
   - Paperless-ngx:
-    - abbr: PL
       href: http://10.1.10.140:8010/
+      description: Document management and intake for scans, receipts, and paperless archiving
+      icon: paperless-ngx.png
+      server: my-docker
+      container: paperless-webserver-1
+      siteMonitor: http://10.1.10.140:8010/
   - Paperless Intake:
-    - abbr: PI
       href: http://10.1.10.140:8010/
+      description: Drop scans into /srv/paperless/consume/inbox, then review and archive in Paperless
+      icon: paperless-ngx.png
+      server: my-docker
+      container: paperless-webserver-1
+      siteMonitor: http://10.1.10.140:8010/

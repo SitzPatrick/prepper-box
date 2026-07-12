@@ -6,6 +6,9 @@ layout:
   Core Apps:
     style: row
     columns: 2
+  Local Apps:
+    style: row
+    columns: 2
   Offline Reference:
     style: row
     columns: 1
