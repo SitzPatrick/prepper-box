@@ -10,6 +10,7 @@ This repo captures the parts of the box that are useful to version control:
 - Network-admin app code
 - Paperless-ngx compose file
 - Qdrant compose file
+- local arcade launcher notes for MAME
 - service-specific docs with short run notes
 - a simple backup/restore script for tracked config files
 
