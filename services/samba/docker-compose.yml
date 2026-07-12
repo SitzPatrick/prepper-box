@@ -1,0 +1,19 @@
+services:
+  samba:
+    image: dperson/samba:latest
+    container_name: audiobooks-share
+    restart: unless-stopped
+    ports:
+      - "139:139"
+      - "445:445"
+    volumes:
+      - /srv/audiobookshelf/audiobooks:/mount_audiobooks
+      - /srv/audiobookshelf/books:/mount_books
+    command:
+      - -u
+      - patrick;CHANGE_ME
+      - -s
+      - Audiobooks;/mount_audiobooks;yes;no;no;patrick
+      - -s
+      - Books;/mount_books;yes;no;no;patrick
+      - -p

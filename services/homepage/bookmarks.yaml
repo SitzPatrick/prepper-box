@@ -1,0 +1,49 @@
+- Local Apps:
+  - Homepage:
+    - abbr: HP
+      href: http://10.1.10.140:3001/
+  - Open WebUI:
+    - abbr: OW
+      href: http://10.1.10.140:3000/
+  - MeshChat:
+    - abbr: MC
+      href: http://10.1.10.140:8011/
+  - Audiobookshelf:
+    - abbr: AB
+      href: http://10.1.10.140:13378/
+  - Books Share:
+    - abbr: BK
+      href: smb://10.1.10.140/Books
+  - Portainer:
+    - abbr: PT
+      href: https://10.1.10.140:9443/
+  - Ollama API:
+    - abbr: OA
+      href: http://10.1.10.140:11434/
+  - Qdrant:
+    - abbr: QD
+      href: http://10.1.10.140:6333/
+- Offline Reference:
+  - Kiwix Prepper Library:
+    - abbr: KP
+      href: http://10.1.10.140:3002/
+  - Protomaps Georgia Map:
+    - abbr: PM
+      href: http://10.1.10.140:3004/examples/local.html
+- References:
+  - Homepage Docs:
+    - abbr: HD
+      href: https://gethomepage.dev/
+  - Open WebUI Docs:
+    - abbr: OU
+      href: https://docs.openwebui.com/
+  - Ollama Docs:
+    - abbr: OL
+      href: https://ollama.com/
+- Workflow:
+  - Paperless-ngx:
+    - abbr: PL
+      href: http://10.1.10.140:8010/
+  - Paperless Intake:
+    - abbr: PI
+      href: http://10.1.10.140:8010/

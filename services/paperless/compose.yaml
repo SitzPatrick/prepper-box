@@ -1,0 +1,56 @@
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: paperless
+      POSTGRES_USER: paperless
+      POSTGRES_PASSWORD: ${PAPERLESS_DB_PASSWORD}
+    volumes:
+    - ./postgres:/var/lib/postgresql/data
+  broker:
+    image: redis:7
+    restart: unless-stopped
+    volumes:
+    - ./redis:/data
+  webserver:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    restart: unless-stopped
+    depends_on:
+    - db
+    - broker
+    ports:
+    - 8010:8000
+    env_file:
+    - .env
+    environment:
+      PAPERLESS_REDIS: redis://broker:6379
+      PAPERLESS_DBHOST: db
+      PAPERLESS_DBPORT: 5432
+      PAPERLESS_DBNAME: paperless
+      PAPERLESS_DBUSER: paperless
+      PAPERLESS_DBPASS: ${PAPERLESS_DB_PASSWORD}
+      PAPERLESS_TIME_ZONE: America/New_York
+      PAPERLESS_OCR_LANGUAGE: eng
+      PAPERLESS_URL: http://10.1.10.140:8010
+      PAPERLESS_ALLOWED_HOSTS: 10.1.10.140,localhost,127.0.0.1
+      USERMAP_UID: 1000
+      USERMAP_GID: 1000
+      PAPERLESS_CONSUMER_RECURSIVE: 'true'
+      PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS: 'true'
+      PAPERLESS_FILENAME_FORMAT: '{% if document_type|lower == "receipt" %}Receipts/{{
+        created_year }}/{% if correspondent %}{{ correspondent }}/{% endif %}{{ title
+        }}{% elif document_type|lower == "letter" %}Letters/{{ created_year }}/{%
+        if correspondent %}{{ correspondent }}/{% endif %}{{ title }}{% elif document_type|lower
+        == "manual" %}Manuals/{% if correspondent %}{{ correspondent }}/{% endif %}{{
+        title }}{% else %}Documents/{{ created_year }}/{% if document_type %}{{ document_type
+        }}/{% endif %}{% if correspondent %}{{ correspondent }}/{% endif %}{{ title
+        }}{% endif %}'
+      PAPERLESS_FILENAME_FORMAT_REMOVE_NONE: 'true'
+      PAPERLESS_OCR_DESKEW: 'true'
+      PAPERLESS_OCR_ROTATE_PAGES: 'true'
+    volumes:
+    - ./data:/usr/src/paperless/data
+    - ./media:/usr/src/paperless/media
+    - ./export:/usr/src/paperless/export
+    - ./consume:/usr/src/paperless/consume

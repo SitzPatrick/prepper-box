@@ -1,0 +1,28 @@
+# secrets / env
+.env
+*.env
+.env.*
+
+# databases / state / generated data
+*.sqlite
+*.sqlite3
+*.db
+*.rdb
+*.log
+*.pyc
+__pycache__/
+
+# media and backups
+*.m4b
+*.mp3
+*.m4a
+*.epub
+*.pdf
+*.zim
+*.pmtiles
+*.tar
+*.zip
+
+# local OS junk
+.DS_Store
+Thumbs.db

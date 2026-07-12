@@ -1,0 +1,21 @@
+title: Patrick Mini PC
+headerStyle: clean
+statusStyle: dot
+hideVersion: true
+layout:
+  Core Apps:
+    style: row
+    columns: 2
+  Offline Reference:
+    style: row
+    columns: 1
+  Access:
+    style: row
+    columns: 2
+  Workflow:
+    style: row
+    columns: 1
+background:
+  blur: sm
+  saturate: 60
+  brightness: 45

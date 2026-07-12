@@ -1,0 +1,33 @@
+:root {
+  --card-radius: 14px;
+}
+
+body {
+  background: linear-gradient(135deg, #0f172a 0%, #111827 45%, #1f2937 100%);
+}
+
+#information-widgets,
+#services,
+#bookmarks {
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-card,
+.bookmark a,
+.information-widget-resource,
+.information-widget-search input {
+  border-radius: var(--card-radius) !important;
+}
+
+.service-card,
+.bookmark a {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.service-group-name,
+.bookmark-group-name {
+  letter-spacing: 0.01em;
+}
