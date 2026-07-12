@@ -9,11 +9,13 @@ services:
     volumes:
       - /srv/audiobookshelf/audiobooks:/mount_audiobooks
       - /srv/audiobookshelf/books:/mount_books
+    env_file:
+      - .env
     command:
       - -u
-      - patrick;CHANGE_ME
+      - ${SAMBA_USER};${SAMBA_PASSWORD}
       - -s
-      - Audiobooks;/mount_audiobooks;yes;no;no;patrick
+      - Audiobooks;/mount_audiobooks;yes;no;no;${SAMBA_USER}
       - -s
-      - Books;/mount_books;yes;no;no;patrick
+      - Books;/mount_books;yes;no;no;${SAMBA_USER}
       - -p
