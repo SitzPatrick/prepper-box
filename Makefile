@@ -13,12 +13,32 @@ RSYNC ?= rsync
 
 help:
 	@printf '%s\n' \
-	  'Targets:' \
-	  '  make homepage-build          Render services/homepage/services.yaml from sections/' \
-	  '  make deploy-homepage         Build and sync Homepage files to $(DEPLOY_HOST):$(DEPLOY_PATH)' \
-	  '  make backup ARCHIVE=...      Create a tar.gz of tracked repo files' \
-	  '  make restore ARCHIVE=...     Extract a tar.gz back into the repo tree' \
-	  '  make backup-list ARCHIVE=... List archive contents'
+	  'prepper-box make targets' \
+	  '' \
+	  'Usage:' \
+	  '  make <target> [VAR=value ...]' \
+	  '' \
+	  'Core targets:' \
+	  '  homepage-build     Rebuild services/homepage/services.yaml from services/homepage/sections/*.yaml' \
+	  '  deploy-homepage    Build Homepage, then rsync the Homepage config set to $(DEPLOY_HOST):$(DEPLOY_PATH)' \
+	  '  backup             Create a tar.gz snapshot of repo-tracked files and unignored working-tree files' \
+	  '  restore            Extract a tar.gz snapshot into the repo tree or another directory' \
+	  '  backup-list        List the contents of a snapshot archive' \
+	  '' \
+	  'Common variables:' \
+	  '  ARCHIVE            Archive path for backup / restore / backup-list' \
+	  '  DEST               Restore destination directory (default: repo root)' \
+	  '  DEPLOY_HOST        SSH target used by deploy-homepage' \
+	  '  DEPLOY_PATH        Remote Homepage directory used by deploy-homepage' \
+	  '  HOMEPAGE_SECTIONS  Directory containing Homepage fragments' \
+	  '  HOMEPAGE_OUTPUT    Generated Homepage services file path' \
+	  '' \
+	  'Examples:' \
+	  '  make homepage-build' \
+	  '  make deploy-homepage' \
+	  '  make backup ARCHIVE=/tmp/prepper-box.tar.gz' \
+	  '  make restore ARCHIVE=/tmp/prepper-box.tar.gz DEST=/tmp/prepper-box-restore' \
+	  '  make backup-list ARCHIVE=/tmp/prepper-box.tar.gz'
 
 homepage-build:
 	$(PYTHON) scripts/render-homepage.py --sections $(HOMEPAGE_SECTIONS) --output $(HOMEPAGE_OUTPUT)
