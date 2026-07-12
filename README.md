@@ -10,7 +10,8 @@ This repo captures the parts of the box that are useful to version control:
 - Network-admin app code
 - Paperless-ngx compose file
 - Qdrant compose file
-- docs that describe what is included and what is intentionally excluded
+- service-specific docs with short run notes
+- a simple backup/restore script for tracked config files
 
 ## What is not in git
 
@@ -30,6 +31,7 @@ This repo intentionally excludes:
 - `services/paperless/` — Paperless-ngx compose file
 - `services/qdrant/` — Qdrant compose file
 - `docs/inventory.md` — what is included and excluded
+- `docs/services/README.md` — per-service quick notes and run tips
 - `.env.example` — template for local secrets
 
 ## Setup

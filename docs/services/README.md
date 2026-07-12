@@ -1,0 +1,10 @@
+# Service docs
+
+Short run notes for each tracked service in this repo.
+
+- [Audiobookshelf](audiobookshelf.md)
+- [Homepage](homepage.md)
+- [Network Admin](network-admin.md)
+- [Paperless-ngx](paperless.md)
+- [Qdrant](qdrant.md)
+- [Samba](samba.md)
