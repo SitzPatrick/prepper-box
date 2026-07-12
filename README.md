@@ -37,6 +37,7 @@ This repo intentionally excludes:
 - `docs/onboarding.md` — how to adapt the repo to your own machine
 - `Makefile` — shortcuts for Homepage build/deploy and backup/restore
 - `scripts/render-homepage.py` — combines Homepage section fragments
+- `arcade/mame/` — local MAME launcher notes and ROM folder layout
 - `.env.example` — template for local secrets
 
 ## Setup
