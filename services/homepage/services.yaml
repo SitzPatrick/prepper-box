@@ -2,6 +2,9 @@
   - Homepage:
     - abbr: HP
       href: http://10.1.10.140:3001/
+  - Arcade Launcher:
+    - abbr: AR
+      href: arcade://launch
   - Open WebUI:
     - abbr: OW
       href: http://10.1.10.140:3000/
